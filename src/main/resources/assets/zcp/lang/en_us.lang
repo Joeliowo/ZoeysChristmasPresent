@@ -1,0 +1,12 @@
+item.melon_animal.name=Pepo Melon
+item.melon_person.name=Pepo Melon
+item.melon_pepo_seeds.name=Melon Pepo Villager Seeds
+item.melon_chicken_seeds.name=Melon Chicken Egg
+
+entity.melonpepo.name=Melon Pepo
+entity.chickenpepo.name=Melon Chicken
+
+itemGroup.pepo_seeds.name=Humanoid Pepo Seeds
+itemGroup.animal_seeds.name=Animal Pepo Seeds
+itemGroup.pepo_fruit.name=Humanoid Pepo Fruit
+itemGroup.animal_fruit.name=Animal Pepo Fruit

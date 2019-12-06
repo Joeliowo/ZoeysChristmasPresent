@@ -1,0 +1,16 @@
+[
+{
+  "modid": "zcp",
+  "name": "KAGIC: ZCP",
+  "description": "A little something something, for a certain someone(s) :D",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Cillian Ryan (Androbean)"],
+  "credits": "To the KAGIC Community for loving and supporting me even when I was gone, to my friends in the Jerver for being some of the best a person could ask for, and a special dedication to Mitt and Zoey. I love you, hivemind.",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
