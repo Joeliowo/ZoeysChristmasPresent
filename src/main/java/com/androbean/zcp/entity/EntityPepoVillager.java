@@ -7,11 +7,13 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import io.netty.buffer.ByteBuf;
 import mod.akrivus.kagic.init.ModSounds;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.IInventory;
@@ -32,6 +34,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
@@ -39,6 +42,8 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class EntityPepoVillager extends EntityCreature implements IInventoryChangedListener, INpc, IEntityOwnable, IEntityAdditionalSpawnData {
@@ -282,7 +287,18 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
 
     public boolean isBuildingMaterial(ItemStack stack){
         Item item = stack.getItem();
-        
+        Map<IBlockState, BlockPos> block;
+        for(BlockPos i : this.build.structureData.getStructureBlocks().keySet()){
+            if(stack == new ItemStack(this.build.structureData.structureBlocks.get(i).getBlock())){
+                return true;
+            }
+        }
+        for(int i = 0; i < this.storage.getSizeInventory(); i++){
+            if(this.storage.getStackInSlot(i) == new ItemStack(Blocks.DIRT)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void openInventory(EntityPlayer player){

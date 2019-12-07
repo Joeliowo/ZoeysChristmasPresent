@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Structure {
+public class Structure{
+    public StructureData structureData;
 
+    public Structure(String name){
+        this.structureData = SchematicLoader.loadSchematic(name);
+    }
 }

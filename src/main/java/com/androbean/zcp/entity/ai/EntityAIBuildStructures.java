@@ -15,6 +15,6 @@ public class EntityAIBuildStructures extends EntityAIBase {
 
     @Override
     public boolean shouldExecute() {
-        return pepo.building && pepo.hasBuildingMaterial();
+        return pepo.building && pepo.hasBuildingMaterial() && pepo.build != null;
     }
 }
