@@ -1,12 +1,15 @@
 package com.androbean.zcp.entity;
 
+import com.androbean.zcp.entity.ai.EntityAIBuildStructures;
 import com.androbean.zcp.entity.ai.EntityAIHarvestAnimals;
 import com.androbean.zcp.init.ZModItems;
 import com.androbean.zcp.structures.Structure;
+import com.androbean.zcp.structures.Village;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import io.netty.buffer.ByteBuf;
 import mod.akrivus.kagic.init.ModSounds;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -62,12 +65,16 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
         }
     });
     public final EntityAIHarvestAnimals harvest = new EntityAIHarvestAnimals(this, 0.3D);
+    public final EntityAIBuildStructures buildStructures = new EntityAIBuildStructures(this, 1.0D);
     public static final int ROTTING_SKIN_COLOR = 0xE0C0A4;
+    public Village village = null;
     public Structure build;
     private UUID leader = null;
     public Item dropItem;
     public Item eatItem;
     public Item seedItem;
+    public Item fruitSeed;
+    public Block fruitStem;
     public InventoryBasic storage;
     public InvWrapper storageHandler;
     public int ageTicks = 0;
@@ -198,6 +205,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
             if(this.getAge() > 0) {
                 if (stack.getItem() instanceof ItemSword) {
                     this.tasks.removeTask(this.harvest);
+                    this.tasks.removeTask(this.buildStructures);
                     boolean toolChanged = true;
                     if (!this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).isItemEqualIgnoreDurability(stack)) {
                         this.entityDropItem(this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND), 0.0F);
@@ -219,6 +227,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
                 }
                 else if (stack.getItem() instanceof ItemHoe) {
                     this.targetTasks.removeTask(this.attackMobs);
+                    this.targetTasks.removeTask(this.buildStructures);
                     boolean toolChanged = true;
                     if (!this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).isItemEqualIgnoreDurability(stack)) {
                         this.entityDropItem(this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND), 0.0F);
@@ -238,7 +247,30 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
                     this.setJob("farmer");
                     return true;
                 }
-                else if(this.isFarmer()){
+                /*else if (stack.getItem() == Items.STICK) {
+                    this.targetTasks.removeTask(this.attackMobs);
+                    this.targetTasks.removeTask(this.harvest);
+                    boolean toolChanged = true;
+                    if (!this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).isItemEqualIgnoreDurability(stack)) {
+                        this.entityDropItem(this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND), 0.0F);
+                        this.setHeldItem(EnumHand.MAIN_HAND, player.getHeldItemMainhand());
+                    }
+                    else{
+                        toolChanged = false;
+                    }
+                    if(toolChanged){
+                        ItemStack heldItem = stack.copy();
+                        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, heldItem);
+                        if (!player.capabilities.isCreativeMode) {
+                            stack.shrink(1);
+                        }
+                    }
+                    this.setCanPickUpLoot(true);
+                    this.tasks.addTask(9, this.buildStructures);
+                    this.setJob("builder");
+                    return true;
+                }*/
+                else if(this.isFarmer() || this.isBuilder()){
                     this.openInventory(player);
                     return true;
                 }
@@ -268,6 +300,10 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
 
     public boolean isFighter(){
         return this.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword;
+    }
+
+    public boolean isBuilder(){
+        return this.getHeldItem(EnumHand.MAIN_HAND).getItem() == Items.STICK;
     }
 
     public boolean hasBuildingMaterial(){

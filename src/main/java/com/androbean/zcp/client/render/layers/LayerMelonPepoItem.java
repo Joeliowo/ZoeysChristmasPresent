@@ -1,6 +1,7 @@
 package com.androbean.zcp.client.render.layers;
 
 import com.androbean.zcp.entity.EntityMelonPepo;
+import com.androbean.zcp.entity.EntityPepoVillager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,9 +14,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class LayerPepoItem implements LayerRenderer<EntityMelonPepo> {
+public class LayerMelonPepoItem implements LayerRenderer<EntityMelonPepo> {
     protected final RenderLivingBase<EntityMelonPepo> livingEntityRenderer;
-    public LayerPepoItem(RenderLivingBase<EntityMelonPepo> livingEntityRendererIn) {
+    public LayerMelonPepoItem(RenderLivingBase<EntityMelonPepo> livingEntityRendererIn) {
         this.livingEntityRenderer = livingEntityRendererIn;
     }
     public void doRenderLayer(EntityMelonPepo entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {

@@ -1,8 +1,10 @@
 package com.androbean.zcp.client.render;
 
-import com.androbean.zcp.client.render.layers.LayerMelonPepoItem;
 import com.androbean.zcp.client.render.layers.LayerPepoSkin;
-import com.androbean.zcp.entity.EntityMelonPepo;
+import com.androbean.zcp.client.render.layers.LayerPumpkinPepoItem;
+import com.androbean.zcp.client.render.layers.LayerWheatPepoItem;
+import com.androbean.zcp.entity.EntityPumpkinPepo;
+import com.androbean.zcp.entity.EntityWheatPepo;
 import mod.akrivus.kagic.client.model.ModelPepo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,17 +12,17 @@ import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerArrow;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderMelonPepo extends RenderLivingBase<EntityMelonPepo> {
+public class RenderPumpkinPepo extends RenderLivingBase<EntityPumpkinPepo> {
 
-    public RenderMelonPepo(){
+    public RenderPumpkinPepo(){
         super(Minecraft.getMinecraft().getRenderManager(), new ModelPepo(), 0.25F);
-        this.addLayer(new LayerMelonPepoItem(this));
+        this.addLayer(new LayerPumpkinPepoItem(this));
         this.addLayer(new LayerArrow(this));
         this.addLayer(new LayerPepoSkin(this));
     }
 
     @Override
-    protected void preRenderCallback(EntityMelonPepo entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback(EntityPumpkinPepo entitylivingbaseIn, float partialTickTime) {
         if(entitylivingbaseIn.getAge() == 0){
             GlStateManager.scale(.6, .6, .6);
         }
@@ -30,7 +32,7 @@ public class RenderMelonPepo extends RenderLivingBase<EntityMelonPepo> {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityMelonPepo entity) {
-        return new ResourceLocation("zcp:textures/entities/melonpepo/melon.png");
+    protected ResourceLocation getEntityTexture(EntityPumpkinPepo entity) {
+        return new ResourceLocation("zcp:textures/entities/pumpkinpepo/melon.png");
     }
 }

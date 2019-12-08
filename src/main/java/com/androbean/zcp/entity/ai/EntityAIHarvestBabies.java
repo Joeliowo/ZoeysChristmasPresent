@@ -2,6 +2,7 @@ package com.androbean.zcp.entity.ai;
 
 import com.androbean.zcp.blocks.BlockMelonChickenStem;
 import com.androbean.zcp.entity.EntityMelonChicken;
+import com.androbean.zcp.entity.EntityPepoAnimal;
 import com.androbean.zcp.init.ZModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -12,12 +13,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityAIHarvestBabies extends EntityAIMoveToBlock {
-    private final EntityMelonChicken pepo;
+    private final EntityPepoAnimal pepo;
     private final World world;
     private int currentTask = -1;
     private int delay = 0;
 
-    public EntityAIHarvestBabies(EntityMelonChicken gemIn, double speedIn) {
+    public EntityAIHarvestBabies(EntityPepoAnimal gemIn, double speedIn) {
         super(gemIn, speedIn, 16);
         this.pepo = gemIn;
         this.world = gemIn.world;
@@ -55,7 +56,7 @@ public class EntityAIHarvestBabies extends EntityAIMoveToBlock {
             BlockPos blockpos = this.destinationBlock.up();
             IBlockState iblockstate = this.world.getBlockState(blockpos);
             Block block = iblockstate.getBlock();
-            if (this.currentTask == 0 && block == ZModBlocks.CHICKEN_STEM && block.getMetaFromState(iblockstate) == 7) {
+            if (this.currentTask == 0 && block == pepo.stem && block.getMetaFromState(iblockstate) == 7) {
                 this.world.destroyBlock(blockpos, true);
             }
             this.currentTask = -1;
@@ -69,7 +70,7 @@ public class EntityAIHarvestBabies extends EntityAIMoveToBlock {
         IBlockState iblockstate = world.getBlockState(cropPos);
         Block crop = iblockstate.getBlock();
         if(block == Blocks.GRASS) {
-            if (crop == ZModBlocks.CHICKEN_STEM && crop.getMetaFromState(iblockstate) == 7) {
+            if (crop == pepo.stem && crop.getMetaFromState(iblockstate) == 7) {
                 this.currentTask = 0;
                 return true;
             }

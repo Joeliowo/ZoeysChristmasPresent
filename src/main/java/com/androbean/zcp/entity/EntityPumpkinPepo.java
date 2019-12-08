@@ -2,29 +2,17 @@ package com.androbean.zcp.entity;
 
 import com.androbean.zcp.entity.ai.EntityAIHarvestAnimals;
 import com.androbean.zcp.entity.ai.EntityAIPickUpItems;
-import com.androbean.zcp.init.ZModBlocks;
 import com.androbean.zcp.init.ZModItems;
-import com.google.common.base.Predicate;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
+public class EntityPumpkinPepo extends EntityPepoVillager {
 
-public class EntityMelonPepo extends EntityPepoVillager {
-
-    public EntityMelonPepo(World worldIn) {
+    public EntityPumpkinPepo(World worldIn) {
         super(worldIn);
         if(this.getAge() == 0){
             this.setSize(0.3F, 0.8F);
@@ -54,8 +42,6 @@ public class EntityMelonPepo extends EntityPepoVillager {
         this.dropItem = ZModItems.PEPO_MELON;
         this.eatItem = ZModItems.ANIMAL_MELON;
         this.seedItem = ZModItems.MELON_SEEDS;
-        this.fruitSeed = ZModItems.MELON_SEEDS;
-        this.fruitStem = ZModBlocks.MELON_STEM;
     }
 
     public void readEntityFromNBT(NBTTagCompound tag){

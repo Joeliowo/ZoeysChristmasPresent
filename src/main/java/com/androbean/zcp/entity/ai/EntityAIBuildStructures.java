@@ -13,8 +13,14 @@ public class EntityAIBuildStructures extends EntityAIBase {
         this.setMutexBits(3);
     }
 
+    public void updateTask(){
+        if(this.pepo.hasBuildingMaterial() && !this.pepo.building && pepo.build != null){
+
+        }
+    }
+
     @Override
     public boolean shouldExecute() {
-        return pepo.building && pepo.hasBuildingMaterial() && pepo.build != null;
+        return pepo.hasBuildingMaterial() && pepo.build != null;
     }
 }

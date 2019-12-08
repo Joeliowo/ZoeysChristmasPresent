@@ -1,7 +1,8 @@
 package com.androbean.zcp.client.render;
 
 import com.androbean.zcp.client.render.layers.LayerPepoAnimalSkin;
-import com.androbean.zcp.entity.EntityMelonChicken;
+import com.androbean.zcp.entity.EntityPotatoChicken;
+import com.androbean.zcp.entity.EntityPumpkinPepo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,16 +10,16 @@ import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerArrow;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderMelonChicken extends RenderLivingBase<EntityMelonChicken> {
+public class RenderPotatoChicken extends RenderLivingBase<EntityPotatoChicken> {
 
-    public RenderMelonChicken(){
+    public RenderPotatoChicken(){
         super(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.25F);
         this.addLayer(new LayerArrow(this));
         this.addLayer(new LayerPepoAnimalSkin(this));
     }
 
     @Override
-    protected void preRenderCallback(EntityMelonChicken entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback(EntityPotatoChicken entitylivingbaseIn, float partialTickTime) {
         if(entitylivingbaseIn.getAge() == 0){
             GlStateManager.scale(.5, .5, .5);
         }
@@ -28,7 +29,7 @@ public class RenderMelonChicken extends RenderLivingBase<EntityMelonChicken> {
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityMelonChicken entity) {
-        return new ResourceLocation("zcp:textures/entities/chickenpepo/chicken.png");
+    protected ResourceLocation getEntityTexture(EntityPotatoChicken entity) {
+        return new ResourceLocation("zcp:textures/entities/potatochickenpepo/chicken.png");
     }
 }

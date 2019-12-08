@@ -56,11 +56,11 @@ public class EntityAIHarvestAnimals extends EntityAIMoveToBlock {
             BlockPos blockpos = this.destinationBlock.up();
             IBlockState iblockstate = this.world.getBlockState(blockpos);
             Block block = iblockstate.getBlock();
-            if (this.currentTask == 0 && block == ZModBlocks.CHICKEN_STEM && block.getMetaFromState(iblockstate) == 7) {
+            if (this.currentTask == 0 && block == pepo.fruitStem && block.getMetaFromState(iblockstate) == 7) {
                 this.world.destroyBlock(blockpos, true);
             }
             if (this.currentTask == 0 && this.world.getBlockState(this.destinationBlock).getBlock() == Blocks.FARMLAND && block == Blocks.AIR && this.hasSeeds()) {
-                this.world.setBlockState(blockpos, ZModBlocks.CHICKEN_STEM.getDefaultState());
+                this.world.setBlockState(blockpos, pepo.fruitStem.getDefaultState());
                 this.removeSeed();
             }
             this.currentTask = -1;
@@ -74,7 +74,7 @@ public class EntityAIHarvestAnimals extends EntityAIMoveToBlock {
         IBlockState iblockstate = world.getBlockState(cropPos);
         Block crop = iblockstate.getBlock();
         if(block == Blocks.FARMLAND) {
-            if (crop == ZModBlocks.CHICKEN_STEM && crop.getMetaFromState(iblockstate) == 7) {
+            if (crop == pepo.fruitStem && crop.getMetaFromState(iblockstate) == 7) {
                 this.currentTask = 0;
                 return true;
             }
@@ -96,7 +96,7 @@ public class EntityAIHarvestAnimals extends EntityAIMoveToBlock {
     }
 
     public boolean isSeed(Item item){
-        if(item == ZModItems.CHICKEN_SEEDS){
+        if(item == pepo.fruitSeed){
             return true;
         }
         else{

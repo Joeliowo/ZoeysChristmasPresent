@@ -1,6 +1,7 @@
 package com.androbean.zcp.entity;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -27,6 +28,7 @@ public class EntityPepoAnimal extends EntityCreature implements IEntityAdditiona
     public static final int ROTTING_SKIN_COLOR = 0xE0C0A4;
     public Item seedItem;
     public Item dropItem;
+    public Block stem;
     public int ageTicks = 0;
 
     public EntityPepoAnimal(World worldIn) {

@@ -23,7 +23,7 @@ public class SchematicLoader {
         } catch (Exception e) {
             KAGIC.instance.chatInfoMessage("Failed to load schematic " + schematic + "; trying uncompressed read");
             try {
-                File file = new File(SchematicLoader.class.getResource(schematic).toExternalForm());
+                File file = new File(SchematicLoader.class.getResource("/assets/zcp/structures/"+schematic+".schematic").toExternalForm());
                 schematicData = CompressedStreamTools.read(file);
             } catch (Exception e1) {
                 KAGIC.instance.chatInfoMessage("Failed to load schematic " + schematic);
