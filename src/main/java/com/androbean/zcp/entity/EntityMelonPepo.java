@@ -54,8 +54,8 @@ public class EntityMelonPepo extends EntityPepoVillager {
         this.dropItem = ZModItems.PEPO_MELON;
         this.eatItem = ZModItems.ANIMAL_MELON;
         this.seedItem = ZModItems.MELON_SEEDS;
-        this.fruitSeed = ZModItems.MELON_SEEDS;
-        this.fruitStem = ZModBlocks.MELON_STEM;
+        this.fruitSeed = ZModItems.CHICKEN_SEEDS;
+        this.fruitStem = ZModBlocks.CHICKEN_STEM;
     }
 
     public void readEntityFromNBT(NBTTagCompound tag){

@@ -2,6 +2,7 @@ package com.androbean.zcp.entity;
 
 import com.androbean.zcp.entity.ai.EntityAIHarvestAnimals;
 import com.androbean.zcp.entity.ai.EntityAIPickUpItems;
+import com.androbean.zcp.init.ZModBlocks;
 import com.androbean.zcp.init.ZModItems;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -39,9 +40,11 @@ public class EntityPotatoPepo extends EntityPepoVillager {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
         }
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0D);
-        this.dropItem = ZModItems.PEPO_MELON;
-        this.eatItem = ZModItems.ANIMAL_MELON;
-        this.seedItem = ZModItems.MELON_SEEDS;
+        this.dropItem = ZModItems.PEPO_POTATO;
+        this.eatItem = ZModItems.ANIMAL_POTATO;
+        this.seedItem = ZModItems.POTATO_SEEDS;
+        this.fruitSeed = ZModItems.POTATO_CHICKEN_SEEDS;
+        this.fruitStem = ZModBlocks.POTATO_CHICKEN_STEM;
     }
 
     public void readEntityFromNBT(NBTTagCompound tag){

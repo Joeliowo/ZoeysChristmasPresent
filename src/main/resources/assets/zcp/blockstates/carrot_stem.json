@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0,facing=up": { "model": "zcp:carrot_stem_growth0" },
+    "age=1,facing=up": { "model": "zcp:carrot_stem_growth0" },
+    "age=2,facing=up": { "model": "zcp:carrot_stem_growth0" },
+    "age=3,facing=up": { "model": "zcp:carrot_stem_growth0" },
+    "age=4,facing=up": { "model": "zcp:carrot_stem_growth6" },
+    "age=5,facing=up": { "model": "zcp:carrot_stem_growth6" },
+    "age=6,facing=up": { "model": "zcp:carrot_stem_growth6" },
+    "age=7,facing=up": { "model": "zcp:carrot_stem_growth7" },
+    "age=7,facing=west": { "model": "zcp:carrot_stem_growth7" },
+    "age=7,facing=east": { "model": "zcp:carrot_stem_growth7", "y": 180 },
+    "age=7,facing=north": { "model": "zcp:carrot_stem_growth7", "y": 90 },
+    "age=7,facing=south": { "model": "zcp:carrot_stem_growth7", "y": 270 }
+  }
+}

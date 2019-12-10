@@ -37,6 +37,7 @@ public class EntityPumpkinChicken extends EntityPepoAnimal {
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(.8D);
         this.seedItem = ZModItems.CHICKEN_SEEDS;
         this.dropItem = ZModItems.ANIMAL_MELON;
+        this.stem = ZModBlocks.POTATO_CHICKEN_STEM;
     }
 
     public void writeEntityToNBT(NBTTagCompound compound) {
@@ -59,10 +60,10 @@ public class EntityPumpkinChicken extends EntityPepoAnimal {
             if(this.getAge() == 1) {
                 if (this.world.getBlockState(this.getPosition().down()) == Blocks.GRASS.getDefaultState()) {
                     this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1, 1);
-                    this.world.setBlockState(this.getPosition(), ZModBlocks.CHICKEN_STEM.getDefaultState());
+                    this.world.setBlockState(this.getPosition(), this.stem.getDefaultState());
                 } else {
                     this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1, 1);
-                    this.entityDropItem(new ItemStack(ZModItems.CHICKEN_SEEDS), 0);
+                    this.entityDropItem(new ItemStack(this.seedItem), 0);
                 }
             }
             this.eggCounter = 0;

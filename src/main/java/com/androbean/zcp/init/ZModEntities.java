@@ -1,8 +1,7 @@
 package com.androbean.zcp.init;
 
 import com.androbean.zcp.ZCP;
-import com.androbean.zcp.entity.EntityMelonChicken;
-import com.androbean.zcp.entity.EntityMelonPepo;
+import com.androbean.zcp.entity.*;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +16,18 @@ public class ZModEntities {
     public static void register(){
         registerMob("melonpepo", EntityMelonPepo.class, 0x51D4A4, 0xF5FFCC);
         registerMob("chickenpepo", EntityMelonChicken.class, 0x51D4A4, 0xF5FFCC);
+
+        registerMob("pumpkinpepo", EntityPumpkinPepo.class, 0x51D4A4, 0xF5FFCC);
+        registerMob("pumpkinchickenpepo", EntityPumpkinChicken.class, 0x51D4A4, 0xF5FFCC);
+
+        registerMob("potatopepo", EntityPotatoPepo.class, 0x51D4A4, 0xF5FFCC);
+        registerMob("potatochickenpepo", EntityPotatoChicken.class, 0x51D4A4, 0xF5FFCC);
+
+        registerMob("carrotpepo", EntityCarrotPepo.class, 0x51D4A4, 0xF5FFCC);
+        registerMob("carrotchickenpepo", EntityCarrotChicken.class, 0x51D4A4, 0xF5FFCC);
+
+        registerMob("wheatpepo", EntityWheatPepo.class, 0x51D4A4, 0xF5FFCC);
+        registerMob("wheatchickenpepo", EntityWheatChicken.class, 0x51D4A4, 0xF5FFCC);
     }
 
     @SuppressWarnings({ "unchecked" })
