@@ -3,10 +3,44 @@ item.melon_person.name=Pepo Melon
 item.melon_pepo_seeds.name=Melon Pepo Villager Seeds
 item.melon_chicken_seeds.name=Melon Chicken Egg
 
+item.pumpkin_animal.name=Pepo Pumpkin
+item.pumpkin_person.name=Pepo Pumpkin
+item.pumpkin_pepo_seeds.name=Pumpkin Pepo Villager Seeds
+item.pumpkin_chicken_seeds.name=Pumpkin Chicken Egg
+
+item.potato_animal.name=Pepo Potato
+item.potato_person.name=Pepo Potato
+item.potato_pepo_seeds.name=Potato Pepo Villager Seeds
+item.potato_chicken_seeds.name=Potato Chicken Egg
+
+item.carrot_animal.name=Pepo Carrot
+item.carrot_person.name=Pepo Carrot
+item.carrot_pepo_seeds.name=Carrot Pepo Villager Seeds
+item.carrot_chicken_seeds.name=Carrot Chicken Egg
+
+item.wheat_animal.name=Pepo Wheat
+item.wheat_person.name=Pepo Wheat
+item.wheat_pepo_seeds.name=Wheat Pepo Villager Seeds
+item.wheat_chicken_seeds.name=Wheat Chicken Egg
+
+
 entity.melonpepo.name=Melon Pepo
 entity.chickenpepo.name=Melon Chicken
 
-itemGroup.pepo_seeds.name=Humanoid Pepo Seeds
-itemGroup.animal_seeds.name=Animal Pepo Seeds
-itemGroup.pepo_fruit.name=Humanoid Pepo Fruit
-itemGroup.animal_fruit.name=Animal Pepo Fruit
+entity.pumpkinpepo.name=Pumpkin Pepo
+entity.pumpkinchickenpepo.name=Pumpkin Chicken
+
+entity.carrotpepo.name=Carrot Pepo
+entity.carrotchickenpepo.name=Carrot Chicken
+
+entity.potatopepo.name=Potato Pepo
+entity.potatochickenpepo.name=Potato Chicken
+
+entity.wheatpepo.name=Wheat Pepo
+entity.wheatchickenpepo.name=Wheat Chicken
+
+
+itemGroup.pepo_seeds=Humanoid Pepo Seeds
+itemGroup.animal_seeds=Animal Pepo Seeds
+itemGroup.pepo_fruit=Humanoid Pepo Fruit
+itemGroup.animal_fruit=Animal Pepo Fruit

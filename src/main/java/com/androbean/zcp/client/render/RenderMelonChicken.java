@@ -1,6 +1,7 @@
 package com.androbean.zcp.client.render;
 
 import com.androbean.zcp.client.render.layers.LayerPepoAnimalSkin;
+import com.androbean.zcp.client.render.models.ModelFruitChicken;
 import com.androbean.zcp.entity.EntityMelonChicken;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelChicken;
@@ -12,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderMelonChicken extends RenderLivingBase<EntityMelonChicken> {
 
     public RenderMelonChicken(){
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelChicken(), 0.25F);
+        super(Minecraft.getMinecraft().getRenderManager(), new ModelFruitChicken(), 0.25F);
         this.addLayer(new LayerArrow(this));
         this.addLayer(new LayerPepoAnimalSkin(this));
     }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +14,7 @@ public class StructureData {
     public short width;
     public short height;
     public short length;
+    public String name;
     public Map<BlockPos, IBlockState> structureBlocks;
     public NBTTagList tileEntities;
     public NBTTagList entities;
@@ -51,6 +53,14 @@ public class StructureData {
 
     public short getLength() {
         return this.length;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setStructureBlocks(Map<BlockPos, IBlockState> structureBlocks) {

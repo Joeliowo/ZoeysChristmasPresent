@@ -24,22 +24,22 @@ public class EntityCarrotPepo extends EntityPepoVillager {
         this.initStorage();
         this.setCanPickUpLoot(true);
         //Hey Cillian tomorrow, remember that the problem is probably in the job the pepo has since u cant be bothered to wait for a pepo to grow up.
-        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, true));
-        this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(2, new EntityAIAttackMelee(this, .6D, true));
+        this.tasks.addTask(7, new EntityAIWander(this, .6D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 16.0F));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityMob.class, 16.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
-        this.tasks.addTask(9, new EntityAIHarvestAnimals(this, 1.0D));
-        this.tasks.addTask(3, new EntityAIPickUpItems(this, 1.0D));
+        this.tasks.addTask(9, new EntityAIHarvestAnimals(this, .6D));
+        this.tasks.addTask(3, new EntityAIPickUpItems(this, .6D));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(.6D);
         if(this.getAge() > 0) {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
         }
         else{
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
         }
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(.6D);
         this.dropItem = ZModItems.PEPO_CARROT;
         this.eatItem = ZModItems.ANIMAL_CARROT;
         this.seedItem = ZModItems.CARROT_SEEDS;

@@ -17,6 +17,7 @@ public class Village {
     public World world;
     public int population;
     public List<EntityPepoVillager> populous;
+    public List<Structure> buildings;
 
     public Village(World world, String name) throws IOException {
         this.FILE_PATH = new File(world.getMinecraftServer().getDataDirectory().getAbsolutePath().replaceAll("\\\\\\.$", "") + (world.getMinecraftServer().isSinglePlayer() ? "\\saves\\" : "\\") + world.getMinecraftServer().getFolderName() + "\\" + name +".dat").getAbsolutePath();
@@ -67,6 +68,14 @@ public class Village {
                 EntityPepoVillager pepo = new EntityPepoVillager(this.world);
                 pepo.readFromNBT(tag);
                 this.populous.add(pepo);
+            }
+        }
+        if(this.buildings != null){
+            NBTTagList list = nbt.getTagList("buildings", 10);
+            for(int i = 0; i < list.tagCount(); i++){
+                NBTTagCompound tag = list.getCompoundTagAt(i);
+                Structure structure = new Structure(tag.getString("name"));
+                structure.readFromNBT(tag);
             }
         }
         this.population = nbt.getInteger("population");

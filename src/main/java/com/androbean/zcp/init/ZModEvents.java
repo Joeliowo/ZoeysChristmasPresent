@@ -1,8 +1,21 @@
 package com.androbean.zcp.init;
 
 import com.androbean.zcp.ZCP;
+import com.androbean.zcp.entity.EntityPepoAnimal;
+import com.androbean.zcp.entity.EntityPepoVillager;
+import com.google.common.base.Predicate;
+import mod.akrivus.kagic.entity.EntityPepo;
 import mod.akrivus.kagic.entity.gem.EntityRoseQuartz;
 import mod.heimrarnadalr.kagic.world.structure.RoseFountain;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,6 +45,17 @@ public class ZModEvents {
             ((EntityRoseQuartz) event.getEntity()).ROSE_RECIPES.put(Items.CARROT, ZModItems.CARROT_SEEDS);
             ((EntityRoseQuartz) event.getEntity()).ROSE_RECIPES.put(Items.WHEAT_SEEDS, ZModItems.WHEAT_SEEDS);
             ((EntityRoseQuartz) event.getEntity()).ROSE_RECIPES.put(Items.EGG, this.getRandomEgg());
+        }
+    }
+
+    @SubscribeEvent
+    public void MakeHostile(EntityJoinWorldEvent event){
+        if(event.getEntity() instanceof EntityCreature){
+            EntityCreature mob = (EntityCreature) event.getEntity();
+            if(mob instanceof EntityWolf && !((EntityWolf) mob).isTamed() || mob instanceof EntityMob || mob instanceof EntityIronGolem){
+                mob.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityPepoAnimal>(mob, EntityPepoAnimal.class, true));
+                mob.targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityPepoVillager>(mob, EntityPepoVillager.class, true));
+            }
         }
     }
 

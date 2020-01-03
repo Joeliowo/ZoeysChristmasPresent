@@ -19,7 +19,7 @@ public class SchematicLoader {
     public static StructureData loadSchematic(String schematic) {
         NBTTagCompound schematicData;
         try {
-            schematicData = CompressedStreamTools.readCompressed(SchematicLoader.class.getResourceAsStream(schematic));
+            schematicData = CompressedStreamTools.readCompressed(SchematicLoader.class.getResourceAsStream("/assets/zcp/structures/"+schematic+".schematic"));
         } catch (Exception e) {
             KAGIC.instance.chatInfoMessage("Failed to load schematic " + schematic + "; trying uncompressed read");
             try {

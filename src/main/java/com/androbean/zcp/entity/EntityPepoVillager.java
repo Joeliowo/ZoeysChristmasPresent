@@ -3,6 +3,8 @@ package com.androbean.zcp.entity;
 import com.androbean.zcp.entity.ai.EntityAIBuildStructures;
 import com.androbean.zcp.entity.ai.EntityAIHarvestAnimals;
 import com.androbean.zcp.init.ZModItems;
+import com.androbean.zcp.structures.SchematicLoader;
+import com.androbean.zcp.structures.SchematicLoading;
 import com.androbean.zcp.structures.Structure;
 import com.androbean.zcp.structures.Village;
 import com.google.common.base.Optional;
@@ -278,7 +280,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
         }
         if (!this.isOwner(player)) {
             if (this.getIsClaimable()) {
-                if (player.getHeldItemMainhand().getItem() == ZModItems.ANIMAL_MELON) {
+                if (player.getHeldItemMainhand().getItem() == this.eatItem) {
                     this.Claim(player.getUniqueID());
                     return true;
                 }

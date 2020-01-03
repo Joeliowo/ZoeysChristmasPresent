@@ -24,20 +24,20 @@ public class EntityPumpkinChicken extends EntityPepoAnimal {
         else{
             this.setSize(.5F, .8F);
         }
-        this.tasks.addTask(5, new EntityAIWander(this, .8D));
+        this.tasks.addTask(5, new EntityAIWander(this, .5D));
         this.tasks.addTask(3, new EntityAIPanic(this, 1.0D));
         this.tasks.addTask(3, new EntityAIEatGrass(this));
-        this.tasks.addTask(5, new EntityAIHarvestBabies(this, .8D));
+        this.tasks.addTask(5, new EntityAIHarvestBabies(this, .5D));
         if(this.getAge() > 0) {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
         }
         else{
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(5.0D);
         }
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(.8D);
-        this.seedItem = ZModItems.CHICKEN_SEEDS;
-        this.dropItem = ZModItems.ANIMAL_MELON;
-        this.stem = ZModBlocks.POTATO_CHICKEN_STEM;
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(.5D);
+        this.seedItem = ZModItems.PUMPKIN_CHICKEN_SEEDS;
+        this.dropItem = ZModItems.ANIMAL_PUMPKIN;
+        this.stem = ZModBlocks.PUMPKIN_CHICKEN_STEM;
     }
 
     public void writeEntityToNBT(NBTTagCompound compound) {
