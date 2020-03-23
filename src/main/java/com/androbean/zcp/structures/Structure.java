@@ -17,7 +17,7 @@ public class Structure{
     public EntityPepoVillager owner;
     public World world;
 
-    public Structure(String name){
+    public Structure(String name, World world){
         this.structureData = SchematicLoader.loadSchematic(name);
     }
 

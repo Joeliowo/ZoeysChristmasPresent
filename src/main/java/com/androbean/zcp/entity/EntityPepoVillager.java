@@ -2,11 +2,10 @@ package com.androbean.zcp.entity;
 
 import com.androbean.zcp.entity.ai.EntityAIBuildStructures;
 import com.androbean.zcp.entity.ai.EntityAIHarvestAnimals;
+import com.androbean.zcp.entity.genetics.Gene;
 import com.androbean.zcp.init.ZModItems;
-import com.androbean.zcp.structures.SchematicLoader;
-import com.androbean.zcp.structures.SchematicLoading;
+import com.androbean.zcp.items.ItemFruit;
 import com.androbean.zcp.structures.Structure;
-import com.androbean.zcp.structures.Village;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import io.netty.buffer.ByteBuf;
@@ -40,14 +39,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -69,11 +67,9 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
     public final EntityAIHarvestAnimals harvest = new EntityAIHarvestAnimals(this, 0.3D);
     public final EntityAIBuildStructures buildStructures = new EntityAIBuildStructures(this, 1.0D);
     public static final int ROTTING_SKIN_COLOR = 0xE0C0A4;
-    public Village village = null;
     public Structure build;
     private UUID leader = null;
     public Item dropItem;
-    public Item eatItem;
     public Item seedItem;
     public Item fruitSeed;
     public Block fruitStem;
@@ -82,6 +78,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
     public int ageTicks = 0;
     public int buildingBlock = 0;
     public boolean building = false;
+    public List<Gene> genome;
 
     public EntityPepoVillager(World worldIn) {
         super(worldIn);
@@ -102,6 +99,23 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
     @Override
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
         return super.onInitialSpawn(difficulty, livingdata);
+    }
+
+    public float getGeneValue(String name){
+        for(Gene gene : genome){
+            if(name.equals(getName())){
+                return gene.getValue();
+            }
+        }
+        return 0;
+    }
+
+    public void setGenome(List<Gene> genome){
+        this.genome = genome;
+    }
+
+    public List<Gene> getGenome(){
+        return this.genome;
     }
 
     public boolean canDespawn() {
@@ -280,7 +294,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
         }
         if (!this.isOwner(player)) {
             if (this.getIsClaimable()) {
-                if (player.getHeldItemMainhand().getItem() == this.eatItem) {
+                if (this.isFood(player.getHeldItemMainhand().getItem())) {
                     this.Claim(player.getUniqueID());
                     return true;
                 }
@@ -369,7 +383,7 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
     public int checkForFood(){
         boolean isFood = false;
         for(int i = 0; i < this.storage.getSizeInventory(); i++){
-            if(this.storage.getStackInSlot(i).getItem() == this.eatItem){
+            if(this.isFood(this.storage.getStackInSlot(i).getItem())){
                 isFood = true;
                 return i;
             }
@@ -378,6 +392,13 @@ public class EntityPepoVillager extends EntityCreature implements IInventoryChan
             this.setIsHungry(true);
         }
         return 420;
+    }
+
+    public boolean isFood(Item item){
+        if(item instanceof ItemFruit){
+            return true;
+        }
+        return false;
     }
 
     @Override
